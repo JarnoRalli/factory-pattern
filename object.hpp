@@ -26,6 +26,7 @@ std::string to_string(object_id const& id)
 
 struct IObject
 {
+    virtual ~IObject(){};
     virtual int get_int() = 0;
     virtual object_id get_object_type() = 0;
 };
@@ -55,3 +56,4 @@ using createobject_fcn = object_ptr(*)();
 using ObjectFactory = Factory<object_ptr, object_id, createobject_fcn>;
 
 int get_registered_creators();
+
