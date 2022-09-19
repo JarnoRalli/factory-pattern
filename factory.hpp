@@ -66,3 +66,4 @@ struct Factory
 
    creator_storage_t registered_creators = {};
 };
+

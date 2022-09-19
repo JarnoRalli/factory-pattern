@@ -46,3 +46,4 @@ object_id Object2::get_object_type()
 {
     return object_id::OBJECT2;
 };
+
