@@ -1,47 +1,17 @@
 # A Factory Pattern with Singleton
 
-This repo implements a simple factory-pattern and a singleton. A singleton of the factory registers two creator functions in `object.cpp`:
+This repository implements a simple factory-pattern and a singleton-object in a library called `factory`.
+The singleton-object can be used for creating a single instance of a concrete factory. 
+Functionality of the factory-pattern is showcased using an interface called `IObject`, 
+and two object-classes called `Object1` and `Object2` that implement the interface.
+The factory object registers two creator functions in `object.cpp`:
 
 ```cpp
-bool b1 = Singleton<ObjectFactory>::Instance().registercreator(object_id::OBJECT1, &object1_creator);
-bool b2 = Singleton<ObjectFactory>::Instance().registercreator(object_id::OBJECT2, &object2_creator);
+bool b1 = Singleton<ObjectFactory>::Instance().registercreator(object_id::OBJECT1, &object1_creator_fcn);
+bool b2 = Singleton<ObjectFactory>::Instance().registercreator(object_id::OBJECT2, &object2_creator_fcn);
 ```
 
-Even though the singleton should create only a single instance of the factory, this does not appear to be the case.
-
-## Output When Executing in Windows 11
-
-Compiled with: Visual Studio 2019
-
-```bash
-Factory constructor, this: 98754C0
-Factory registering a product-creator function
-Factory registering a product-creator function
---- ENTERING MAIN ---
-Nr registered creators from object.cpp: 2
-Nr registered creators from main: Factory constructor, this: EFCA3450
-0
---- EXITING MAIN ---
-Factory destructor, this: EFCA3450
-Factory destructor, this: 98754C0
-```
-
-As can be seen from the above, there are actually two instances of the factory, even if only one should ever exist.
-
-## Output When Executing in Ubuntu 20.04
-
-Compiled with: g++ version 9.4.0
-
-```bash
-Factory constructor, this: 13ED7160
-Factory registering a product-creator function
-Factory registering a product-creator function
---- ENTERING MAIN ---
-Nr registered creators from object.cpp: 2
-Nr registered creators from main: 2
---- EXITING MAIN ---
-Factory destructor, this: 13ED7160
-```
-
-As can be seen from the above, there only exists a single instance of the factory, as expected.
+When an executable, that links against the `factory` library, is loaded, `ObjectFactory` registers the
+creator functions, and these can be used for generating objects of type `Object1` and `Object2`.
+Functionality has been tested using both g++ version 9.4.0 and Visual Studio 2019.
 
