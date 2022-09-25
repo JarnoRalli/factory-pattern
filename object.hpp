@@ -3,15 +3,16 @@
 #include <memory>
 #include <string>
 
-#include <factory.hpp>
+#include "factory.hpp"
+#include "dll_support.hpp"
 
-enum class object_id : int
+FACTORY_EXPORT enum class object_id : int
 {
     OBJECT1,
     OBJECT2
 };
 
-std::string to_string(object_id const& id)
+FACTORY_EXPORT inline std::string to_string(object_id const& id)
 {
     switch (id) 
     {
@@ -24,14 +25,14 @@ std::string to_string(object_id const& id)
     }
 }
 
-struct IObject
+struct FACTORY_EXPORT IObject
 {
     virtual ~IObject(){};
     virtual int get_int() = 0;
     virtual object_id get_object_type() = 0;
 };
 
-struct Object1 : public IObject
+struct FACTORY_EXPORT Object1 : public IObject
 {
     Object1();
     
@@ -41,7 +42,7 @@ struct Object1 : public IObject
     int my_int;
 };
 
-struct Object2 : public IObject
+struct FACTORY_EXPORT Object2 : public IObject
 {
     Object2();
 
@@ -55,5 +56,4 @@ using object_ptr = std::unique_ptr<IObject>;
 using createobject_fcn = object_ptr(*)();
 using ObjectFactory = Factory<object_ptr, object_id, createobject_fcn>;
 
-int get_registered_creators();
-
+FACTORY_EXPORT std::size_t get_nr_registered_creators();

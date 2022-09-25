@@ -1,7 +1,9 @@
 #pragma once
 
+#include "dll_support.hpp"
+
 template <class T>
-class Singleton
+class FACTORY_EXPORT Singleton
 {
 public:
     Singleton()                  = delete;
@@ -14,4 +16,3 @@ public:
         return obj;
     }
 };
-
