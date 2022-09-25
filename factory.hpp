@@ -3,32 +3,34 @@
 #include <map>
 #include <iostream>
 
+#include "dll_support.hpp"
+
 template<
     class AbstractProduct,
     typename IdentifierType,
     typename ProductCreator
 >
-struct Factory
+struct FACTORY_EXPORT Factory
 {
     using creator_storage_t = std::map<IdentifierType, ProductCreator>;
     Factory()
     {
-        printf("Factory constructor, this: %X\n", this);
+        printf("Factory constructor, this: %p\n", this);
     }
 
     Factory(Factory const& other)
     {
-        printf("Factory copy-constructor, this: %X\n", this);
+        printf("Factory copy-constructor, this: %p\n", this);
     }
 
     Factory(Factory const&& other)
     {
-        printf("Factory move-constructor, this: %X\n", this);
+        printf("Factory move-constructor, this: %p\n", this);
     }
 
     ~Factory()
     {
-        printf("Factory destructor, this: %X\n", this);
+        printf("Factory destructor, this: %p\n", this);
     }
 
     bool registercreator(IdentifierType const& id, ProductCreator creator)
@@ -66,4 +68,3 @@ struct Factory
 
    creator_storage_t registered_creators = {};
 };
-
