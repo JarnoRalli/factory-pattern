@@ -1,9 +1,11 @@
+![Linux](https://github.com/JarnoRalli/factory-pattern/actions/workflows/linux_build.yml/badge.svg)   ![Windows](https://github.com/JarnoRalli/factory-pattern/actions/workflows/windows_build.yml/badge.svg)   ![Code style](https://github.com/JarnoRalli/factory-pattern/actions/workflows/code_style.yml/badge.svg)
+
 # A Factory Pattern and a Singleton
 
 This repository implements a simple factory-pattern and a singleton in a library called `factory`.
 
 ## Singleton
-The singleton can be used for creating a single instance of a concrete factory. 
+A singleton can be used for creating a single instance of a concrete factory. 
 The singleton doesn't have constructors, so objects of this type cannot be created. Intended use
 is calling the static function `Instance()` that returns a reference to a static object of type
 `<T>`, e.g. `Singleton<Object>::Instance()`. An explicit instantiation of the Singleton template
