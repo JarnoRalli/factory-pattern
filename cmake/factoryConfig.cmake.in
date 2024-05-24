@@ -1,0 +1,13 @@
+include(CMakeFindDependencyMacro)
+
+@PACKAGE_INIT@
+
+set_and_check(factory_INCLUDE_DIR "@PACKAGE_CMAKE_INSTALL_INCLUDEDIR@")
+set_and_check(factory_LIB_DIR "@PACKAGE_CMAKE_INSTALL_LIBDIR@")
+
+get_filename_component(factory_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+if(NOT TARGET factory::factory)
+    message(STATUS "Loading targets")
+    include("${factory_CMAKE_DIR}/factoryTargets.cmake")
+endif()

@@ -3,31 +3,35 @@
 #include <memory>
 #include <string>
 
-#include "factory.hpp"
-#include "dll_support.hpp"
+#include "factory/factory.hpp"
+#include "factory/dll_support.hpp"
 
 /**
- * @enum object_id
+ * @enum object_type
  * @brief An enumerator object for identifying different objects
- * @var object_id::OBJECT1
+ * @var object_type::OBJECT1
  * Object1
- * @var object_id::OBJECT2
+ * @var object_type::OBJECT2
  * Object2
  */
-FACTORY_EXPORT enum class object_id : int { OBJECT1, OBJECT2 };
+enum class object_type : int
+{
+    OBJECT1,
+    OBJECT2
+};
 
 /**
  * @brief Outputs object id in string
- * @param id : id to be converted into a std::string.
- * @return name of the object.
+ * @param type : type to be converted into a std::string.
+ * @return name of the object type.
  */
-FACTORY_EXPORT inline std::string to_string(object_id const& id)
+FACTORY_EXPORT inline std::string to_string(object_type const& type)
 {
-    switch (id)
+    switch (type)
     {
-        case object_id::OBJECT1:
+        case object_type::OBJECT1:
             return "OBJECT1";
-        case object_id::OBJECT2:
+        case object_type::OBJECT2:
             return "OBJECT2";
         default:
             return "UNKNOWN";
@@ -54,7 +58,7 @@ struct FACTORY_EXPORT IObject
      * @brief Virtual function that returns object id.
      * @return object id
      */
-    virtual object_id get_object_type() = 0;
+    virtual object_type get_object_type() = 0;
 };
 
 /**
@@ -77,7 +81,7 @@ struct FACTORY_EXPORT Object1 : public IObject
      * @brief Returns object type of this object.
      * @return object id of this object.
      */
-    object_id get_object_type() final;
+    object_type get_object_type() final;
 
     int my_int;
 };
@@ -102,14 +106,14 @@ struct FACTORY_EXPORT Object2 : public IObject
      * @brief Returns object type of this object.
      * @return object id of this object.
      */
-    object_id get_object_type() final;
+    object_type get_object_type() final;
 
     int my_int;
 };
 
 using object_ptr       = std::unique_ptr<IObject>;
 using createobject_fcn = object_ptr (*)();
-using ObjectFactory    = Factory<object_ptr, object_id, createobject_fcn>;
+using ObjectFactory    = Factory<object_ptr, object_type, createobject_fcn>;
 
 /**
  * @brief Returns the number of registered creators of the Object-factory singleton instance.
