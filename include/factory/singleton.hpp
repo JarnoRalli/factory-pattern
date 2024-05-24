@@ -1,6 +1,6 @@
 #pragma once
 
-#include "dll_support.hpp"
+#include "factory/dll_support.hpp"
 
 /**
  * @brief A class for delivering singleton objects.

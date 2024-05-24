@@ -3,7 +3,7 @@
 #include <map>
 #include <iostream>
 
-#include "dll_support.hpp"
+#include "factory/dll_support.hpp"
 
 /**
  * @brief Factory-class for creating objects of AbstractProduct type.
@@ -31,22 +31,18 @@ struct FACTORY_EXPORT Factory
     using creator_storage_t = std::map<IdentifierType, ProductCreator>;
     Factory()
     {
-        printf("Factory constructor, this: %p\n", this);
     }
 
     Factory(Factory const& other)
     {
-        printf("Factory copy-constructor, this: %p\n", this);
     }
 
     Factory(Factory const&& other)
     {
-        printf("Factory move-constructor, this: %p\n", this);
     }
 
     ~Factory()
     {
-        printf("Factory destructor, this: %p\n", this);
     }
 
     /**
@@ -57,7 +53,6 @@ struct FACTORY_EXPORT Factory
      */
     bool registercreator(IdentifierType const& id, ProductCreator creator)
     {
-        std::cout << "Factory registering a product-creator function" << std::endl;
         auto result = registered_creators.try_emplace(id, creator);
         return result.second;
     };
