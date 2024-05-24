@@ -14,7 +14,11 @@
  * @var object_type::OBJECT2
  * Object2
  */
-FACTORY_EXPORT enum class object_type : int { OBJECT1, OBJECT2 };
+enum class object_type : int
+{
+    OBJECT1,
+    OBJECT2
+};
 
 /**
  * @brief Outputs object id in string
