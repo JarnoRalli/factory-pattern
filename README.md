@@ -1,4 +1,4 @@
-![Linux](https://github.com/JarnoRalli/factory-pattern/actions/workflows/linux_build.yml/badge.svg)   ![Windows](https://github.com/JarnoRalli/factory-pattern/actions/workflows/windows_build.yml/badge.svg)   ![Code style](https://github.com/JarnoRalli/factory-pattern/actions/workflows/code_style.yml/badge.svg)
+[![Code Style](https://github.com/JarnoRalli/factory-pattern/actions/workflows/code_style.yml/badge.svg?branch=main&event=push)](https://github.com/JarnoRalli/factory-pattern/actions/workflows/code_style.yml)   [![GCC Build](https://github.com/JarnoRalli/factory-pattern/actions/workflows/linux_build.yml/badge.svg?branch=main&event=push)](https://github.com/JarnoRalli/factory-pattern/actions/workflows/linux_build.yml)   [![Visual Studio Build](https://github.com/JarnoRalli/factory-pattern/actions/workflows/windows_build.yml/badge.svg?branch=main&event=push)](https://github.com/JarnoRalli/factory-pattern/actions/workflows/windows_build.yml)
 
 # A Factory Pattern and a Singleton
 
